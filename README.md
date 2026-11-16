@@ -1,193 +1,233 @@
-# Sahayak: Ayushman Bharat (PM-JAY) WhatsApp Voice Bot
+# 🇮🇳 Sahayak AI: Ayushman Bharat (PM-JAY) Multi-Channel Healthcare Assistant
 
-A multi-language WhatsApp bot that answers questions about the **Ayushman Bharat PM-JAY** health insurance scheme. Users can send **voice notes or text** in Hindi, Marathi, Gujarati, Bengali or English. The bot replies in the same language, and as a **voice note when the user sent a voice note**.
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB.svg?logo=python&logoColor=white)](https://python.org)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React](https://img.shields.io/badge/React-19-61DAFB.svg?logo=react&logoColor=black)](https://react.dev)
+[![Vite](https://img.shields.io/badge/Vite-6.x-646CFF.svg?logo=vite&logoColor=white)](https://vitejs.dev)
+[![Mistral AI](https://img.shields.io/badge/LLM-Mistral%20AI-FF7000.svg)](https://mistral.ai)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Answers come only from a local knowledge file (`ayushman_bharat.txt`). If the answer is not in the file, the bot gives a polite fallback and points to the official website and helpline.
+**Sahayak AI** is an accessible, multi-channel AI assistant built to bridge the digital and linguistic divide for Indian citizens seeking healthcare benefits under **Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY)** and **Ayushman Vaya Vandana Yojana (70+ Senior Citizens Scheme)**.
 
----
-
-## Features
-
-- **Voice in, voice out; text in, text out.** The reply format mirrors the input.
-- **5 languages:** Hindi (`hi`), English (`en`), Marathi (`mr`), Gujarati (`gu`), Bengali (`bn`).
-- **Per-message language detection.** The bot replies in the language of the current message. The language button chosen at the start is only a fallback.
-- **Pre-recorded greeting audio** for users who start with a voice note.
-- **Language selection buttons** in the greeting.
-- **Intro video** (language-specific, with a default fallback) the first time a user asks about the scheme.
-- **Eligibility website button** (WhatsApp call-to-action link).
-- **Quick-topic buttons:** Eligibility, Coverage, Get the card.
-- **RAG over a plain text file** using local TF-IDF. No embedding API calls, so there are no rate-limit problems.
-- **Provider fallbacks:**
-  - Speech-to-text: Sarvam Saaras v3, then Mistral Voxtral
-  - Text-to-speech: Sarvam Bulbul v3, then Microsoft Edge TTS
-- **Terminal test mode** so you can try the bot without WhatsApp.
+The project combines an **omnichannel WhatsApp Voice Bot** and an **interactive voice-guided Web Application (Ayushman Saathi)**, providing conversational guidance, automated eligibility checking, and video/audio walkthroughs in regional Indian languages.
 
 ---
 
-## Conversation Flow
+## 🏗️ System Architecture
 
-1. **First message** (anything, e.g. "Hi")
-   - Voice-note users get the pre-recorded greeting audio.
-   - Text greeting in the user's language, plus language buttons: हिंदी | मराठी | ગુજરાતી | বাংলা | English.
-   - If the first message is a real question, it is answered right away.
-2. **User asks about a healthcare scheme**
-   - The bot confirms it is about Ayushman Bharat PM-JAY.
-   - Sends the intro video, an invitation to ask questions, the eligibility link button and the topic buttons.
-3. **Follow-up questions**
-   - Retrieve the most relevant chunks from `ayushman_bharat.txt`.
-   - Mistral generates a short spoken-style answer in the user's language, using only that context.
-   - If the answer is not in the file, the bot sends the fallback message and the website button.
+```mermaid
+flowchart TD
+    subgraph Citizens["Beneficiaries & Citizens"]
+        WA_User["WhatsApp User<br/>(Voice Note / Text)"]
+        Web_User["Web Browser User<br/>(Mobile / Desktop)"]
+    end
 
-Off-topic questions get a polite "I can only help with Ayushman Bharat PM-JAY" message.
+    subgraph Channels["Frontend & Access Channels"]
+        WA_API["WhatsApp Cloud API<br/>(Meta for Developers)"]
+        WebApp["Web App (Ayushman Saathi)<br/>React 19 + Vite (web_app/)"]
+    end
 
----
+    subgraph CoreBackend["Sahayak AI Core (FastAPI Server)"]
+        Webhook["Webhook Controller<br/>(sahayak_bot.py)"]
+        QueryAnalyzer["Query & Intent Analyzer<br/>(Lang Detect + Schema Gate)"]
+        RAG["Zero-Cost TF-IDF RAG<br/>(ayushman_bharat.txt)"]
+        MistralLLM["Mistral AI Engine<br/>(open-mistral-nemo)"]
+        STT["Dual STT Pipeline<br/>Sarvam Saaras v3 ➔ Voxtral"]
+        TTS["Dual TTS Pipeline<br/>Sarvam Bulbul v3 ➔ Edge-TTS"]
+    end
 
-## Project Structure
+    WA_User <-->|Voice / Text / Buttons| WA_API
+    WA_API <--> Webhook
+    Web_User <--> WebApp
+    WebApp <-->|REST API / Session Handoff| Webhook
 
-```
-.
-├── sahayak_bot.py                  # the bot (FastAPI webhook + CLI mode)
-├── ayushman_bharat.txt      # knowledge base (paragraphs separated by blank lines)
-├── embeddings_cache.pkl     # auto-generated TF-IDF cache
-├── .env                     # your secrets (do not commit)
-├── audio/
-│   └── greeting.ogg         # greeting audio (.ogg/.mp3/.mp4/.m4a/.wav/.aac)
-├── videos/
-│   ├── ayushman_intro.mp4       # default video
-│   ├── ayushman_intro_hi.mp4
-│   ├── ayushman_intro_en.mp4
-│   ├── ayushman_intro_mr.mp4
-│   ├── ayushman_intro_gu.mp4
-│   └── ayushman_intro_bn.mp4
-└── out/                     # voice replies saved here in CLI mode
-```
-
-- Any greeting audio format works. It is converted to OGG/Opus automatically, which is what WhatsApp needs to show a playable voice note.
-- If a language-specific video is missing, the bot falls back to `videos/ayushman_intro.mp4`.
-
----
-
-## Requirements
-
-- Python 3.10+
-- [ffmpeg](https://ffmpeg.org/) installed and on your `PATH`
-- A WhatsApp Business Cloud API account (Meta for Developers)
-- A Mistral API key
-- Optional: a Sarvam API key for better Indian-language speech
-
-Install the Python packages:
-
-```bash
-pip install fastapi uvicorn httpx python-dotenv edge-tts
+    Webhook --> STT
+    STT --> QueryAnalyzer
+    QueryAnalyzer --> RAG
+    RAG --> MistralLLM
+    MistralLLM --> TTS
+    TTS --> Webhook
 ```
 
 ---
 
-## Configuration
+## 🌟 Key Highlights & Components
 
-Create a `.env` file in the project folder:
+### 1. 🤖 WhatsApp Voice Bot (`sahayak_bot.py`)
+- **Voice-In / Voice-Out, Text-In / Text-Out**: Automatically mirrors the citizen's communication preference.
+- **5 Indian Languages**: Hindi (`hi`), Marathi (`mr`), Gujarati (`gu`), Bengali (`bn`), and English (`en`).
+- **Dynamic Language Detection**: Inspects each message individually, adapting instantly without forcing manual resets.
+- **Visual Onboarding**: Sends language-specific explainer videos (`videos/`) upon initial inquiry.
+- **Quick Action & CTA Buttons**: Interactive reply buttons for Eligibility, Coverage, Card Issuance, and one-tap web handoff.
+- **Terminal CLI Mode**: Built-in testing mode (`--cli`) to simulate voice and text interactions offline without WhatsApp setup.
 
-```env
-# Required
-MISTRAL_API_KEY=your_mistral_key
-WHATSAPP_TOKEN=your_whatsapp_cloud_api_token
-PHONE_NUMBER_ID=your_whatsapp_phone_number_id
-VERIFY_TOKEN=any_secret_string_you_choose
+### 2. 📱 Interactive Web Application (`web_app/`)
+- **Voice-Guided Questionnaire**: Step-by-step Hindi audio prompts with automated Web Speech API (TTS) fallback.
+- **Senior-Citizen Optimized**: High-contrast, tactile UI designed with accessibility and low digital literacy in mind.
+- **WhatsApp Handoff (`?session=<ID>`)**: Continuous session sync between the WhatsApp chat and web questionnaire.
+- **Offline & Resilient Fallback Engine**: If the backend is unreachable, the client-side rule engine evaluates eligibility locally without breaking user flow.
 
-# Optional
-SARVAM_API_KEY=your_sarvam_key
-SARVAM_TTS_MODEL=bulbul:v3
-SARVAM_SPEAKER=anand
-ELIGIBILITY_WEBSITE_URL=https://your-eligibility-site.example/
+### 3. 🧠 Zero-Rate-Limit Knowledge Engine (Local TF-IDF RAG)
+- Powered by a local knowledge base (`ayushman_bharat.txt`).
+- Uses local TF-IDF retrieval (`embeddings_cache.pkl`) rather than external embedding APIs, eliminating API rate limits and recurring token costs.
+- Automatically re-indexes whenever `ayushman_bharat.txt` is updated.
+
+### 4. 🎙️ Redundant Dual Speech Pipelines
+- **Speech-to-Text (STT)**: Primary provider **Sarvam Saaras v3** with seamless fallback to **Mistral Voxtral**.
+- **Text-to-Speech (TTS)**: Primary provider **Sarvam Bulbul v3** with seamless fallback to **Microsoft Edge-TTS**.
+- **FFmpeg Integration**: Automatic transcode between audio formats (OGG/Opus for WhatsApp, WAV for STT).
+
+---
+
+## 📁 Repository Layout
+
+```text
+Sahayak-AI/
+├── web_app/                    # React 19 + Vite frontend (Ayushman Saathi)
+│   ├── public/                 # Static icons and audio assets
+│   ├── src/
+│   │   ├── components/         # AudioPlayer & UI widgets
+│   │   ├── data/               # Questions schema & backend config
+│   │   └── pages/              # Welcome, Question, Processing, Result
+│   ├── package.json            # Web app dependencies & build scripts
+│   └── README.md               # Dedicated web app documentation
+├── audio/                      # Audio prompts (e.g. greeting.ogg)
+├── videos/                     # Multilingual explainer videos (.mp4)
+├── ayushman_bharat.txt         # Scheme knowledge base (source of truth)
+├── build_embeddings.py         # Script to pre-compute local TF-IDF index
+├── embeddings_cache.pkl        # Serialized TF-IDF vector index
+├── requirements.txt            # Python backend dependencies
+├── sahayak_bot.py              # Main FastAPI application, webhook & CLI bot
+└── README.md                   # Project documentation
 ```
 
-| Variable | Required | Purpose |
-|---|---|---|
-| `MISTRAL_API_KEY` | Yes | Chat model (`open-mistral-nemo`) and Voxtral speech-to-text |
-| `WHATSAPP_TOKEN` | Yes (WhatsApp mode) | WhatsApp Cloud API access token |
-| `PHONE_NUMBER_ID` | Yes (WhatsApp mode) | Your WhatsApp sender phone number ID |
-| `VERIFY_TOKEN` | Yes (WhatsApp mode) | Token used to verify the webhook with Meta |
-| `SARVAM_API_KEY` | No | Enables Sarvam STT/TTS as the primary audio provider |
-| `SARVAM_TTS_MODEL` | No | Sarvam TTS model (default `bulbul:v3`) |
-| `SARVAM_SPEAKER` | No | Sarvam voice (default `anand` for v3, `anushka` otherwise) |
-| `ELIGIBILITY_WEBSITE_URL` | No | URL for the eligibility button |
+---
 
-> **Never commit `.env`.** Add it to `.gitignore`.
+## ⚡ Getting Started
+
+### 1. Prerequisites
+- **Python**: Version `3.10` or higher
+- **Node.js**: Version `18.0` or higher
+- **FFmpeg**: Installed and accessible in your system `PATH`
+- **Mistral API Key**: For chat generation and fallback STT
+- *(Optional)* **Sarvam API Key**: For natural Indian regional voices and transcription
+- *(Optional)* **WhatsApp Cloud API Account**: Via Meta for Developers
 
 ---
 
-## Knowledge Base
+### 2. Backend Setup
 
-Put your content in `ayushman_bharat.txt`, in English:
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/SambhavJain-22/Sahayak-AI.git
+   cd Sahayak-AI
+   ```
 
-- Separate topics with a **blank line**. Each paragraph becomes one searchable chunk.
-- Lines starting with `#` are ignored (use them for comments or headings).
-- The cache (`embeddings_cache.pkl`) rebuilds automatically when the file changes.
+2. **Create and activate a virtual environment**:
+   ```bash
+   # Windows (PowerShell)
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+
+   # Linux / macOS
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install Python dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure Environment Variables**:
+   Create a `.env` file in the root directory:
+   ```env
+   # Required
+   MISTRAL_API_KEY=your_mistral_api_key
+
+   # WhatsApp Cloud API (Required for WhatsApp deployment)
+   WHATSAPP_TOKEN=your_whatsapp_cloud_token
+   PHONE_NUMBER_ID=your_phone_number_id
+   VERIFY_TOKEN=your_custom_webhook_verify_token
+
+   # Optional (Recommended for Indian regional audio)
+   SARVAM_API_KEY=your_sarvam_api_key
+   SARVAM_TTS_MODEL=bulbul:v3
+   SARVAM_SPEAKER=anand
+   ELIGIBILITY_WEBSITE_URL=http://localhost:5173
+   ```
 
 ---
 
-## Running
+### 3. Frontend Setup (`web_app`)
 
-### Terminal test mode (no WhatsApp needed)
+1. **Navigate to the web app folder**:
+   ```bash
+   cd web_app
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Frontend Environment**:
+   Verify or create `web_app/.env`:
+   ```env
+   VITE_BACKEND_URL=http://localhost:8000
+   ```
+
+4. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   The web application will be live at `http://localhost:5173`.
+
+---
+
+## 🚀 Running the Bot
+
+### Option A: Terminal CLI Mode (No WhatsApp or Webhook Needed)
+Test conversational RAG, speech translation, and responses right in your terminal:
 
 ```bash
 python sahayak_bot.py --cli
 ```
+- Type plain text to simulate user messages.
+- Enter `@path/to/audio.ogg` to feed actual voice recordings.
+- Voice outputs are synthesized and saved to `./out/`.
 
-- Type text to pretend that is what the user said (skips speech-to-text).
-- Type `@path/to/voice.ogg` to test a real audio file.
-- Voice replies are saved in `./out/`.
+---
 
-### WhatsApp mode
+### Option B: WhatsApp Webhook Mode
+Run the FastAPI production webhook server:
 
 ```bash
-uvicorn sahayak_bot:app --port 8000
+uvicorn sahayak_bot:app --port 8000 --reload
 ```
 
-Then:
-
-1. Expose your server publicly, for example with `ngrok http 8000`.
-2. In Meta for Developers, open your app, then **WhatsApp > Configuration**.
-3. Set the callback URL to `https://<your-public-url>/webhook` and the verify token to your `VERIFY_TOKEN`.
-4. Subscribe to the **messages** webhook field.
-5. Send "Hi" to your WhatsApp test number.
-
----
-
-## How It Works
-
-| Component | Role |
-|---|---|
-| `MistralClient` | Chat completions with rate-limit spacing and retry on 429/5xx |
-| `SarvamSTT` / `VoxtralSTT` | Speech to text (with `FallbackSTT`) |
-| `SarvamTTS` / `EdgeTTS` | Text to speech (with `FallbackTTS`) |
-| `AudioConverter` | ffmpeg conversion to WAV (for STT) and OGG/Opus (for WhatsApp) |
-| `EmbeddingRetriever` | Local TF-IDF search over the knowledge file |
-| `QueryAnalyzer` | Detects language, checks whether the question is about the scheme, rewrites it as an English search query |
-| `Answerer` | Generates a short answer (under 50 words) using only the retrieved context |
-| `WhatsAppChannel` / `ConsoleChannel` | Send text, audio, video, buttons and link buttons |
-| `VoiceBot` | Conversation logic and per-user sessions |
+#### Connecting to Meta WhatsApp Cloud API:
+1. Expose your local port via tunnel:
+   ```bash
+   ngrok http 8000
+   ```
+2. In the [Meta for Developers Portal](https://developers.facebook.com/):
+   - Navigate to **WhatsApp > Configuration**.
+   - Set **Callback URL** to `https://<your-ngrok-url>/webhook`.
+   - Set **Verify Token** to your matching `.env` `VERIFY_TOKEN`.
+   - Subscribe to the **`messages`** webhook field.
+3. Send a message or voice note to your test WhatsApp number!
 
 ---
 
-## Customization
+## 🔒 Security & Data Privacy
 
-- **Add a language:** add its code to `VALID_LANGS`, `LANG_NAMES`, `EdgeTTS.VOICES`, `SarvamTTS.LANG_CODES`, `LANGUAGES`, `LANG_BTN_TO_CODE`, `VIDEO_FILES`, and every entry in `VoiceBot.TEXTS`, `TOPICS`, `BUTTON_BODY` and the eligibility text/label dictionaries.
-- **Change fixed messages:** edit the `TEXTS` dictionary in `VoiceBot`.
-- **Change quick-topic buttons:** edit `TOPICS` (WhatsApp allows at most 3 reply buttons, with titles up to 20 characters).
-- **Change the answering style:** edit `Answerer.SYSTEM`.
-
----
-
-## Known Limitations
-
-- Sessions are stored in memory, so they reset when the server restarts.
-- Marathi and Hindi share the Devanagari script, so script-based detection treats both as Hindi. The LLM-based detection decides the final language.
-- The Sarvam REST speech-to-text endpoint accepts clips up to 30 seconds.
-- WhatsApp allows only 3 reply buttons per message, so the 5 language buttons are sent as two messages.
+- **No Medical Diagnosis**: Sahayak AI provides scheme information, guidelines, and benefits advisory; it explicitly redirects medical inquiries to registered professionals.
+- **Deterministic RAG**: Responses are strictly synthesized against `ayushman_bharat.txt`. Unsupported queries trigger an authoritative fallback directing citizens to the national toll-free helpline (`14555`) or official portal.
+- **Secrets Management**: Sensitive API keys and tokens must strictly remain in `.env` and are untracked by Git.
 
 ---
 
-## Disclaimer
+## 📄 License
 
-This bot gives general information from a local knowledge file and is not an official government service. For authoritative details, use the official Ayushman Bharat PM-JAY website or call the helpline.
+This project is licensed under the [MIT License](LICENSE).
