@@ -1,0 +1,104 @@
+# KNOWLEDGE BASE for the bot. The bot answers ONLY from this file.
+# Rules: one topic per paragraph, separate paragraphs with a blank line,
+# and mention "Ayushman Bharat PM-JAY" in each paragraph so search works well.
+# Lines starting with # are ignored.
+# Last checked: 24 October 2026 against PIB, MoHFW, NHA-linked pages, Rajya Sabha answers and state health agency pages.
+# Facts marked "as of <date>" change over time (hospital counts, number of states, packages). Re-check on pmjay.gov.in before a demo.
+
+What is Ayushman Bharat PM-JAY: Ayushman Bharat Pradhan Mantri Jan Arogya Yojana (PM-JAY) is a health assurance scheme of the Government of India. It was launched on 23 September 2018 and is fully funded by the government, with no premium or contribution from the beneficiary. It gives cashless treatment for hospitalisation to eligible families at empanelled public and private hospitals.
+
+Objective of Ayushman Bharat PM-JAY: The objective of Ayushman Bharat PM-JAY is to reduce catastrophic health expenditure, improve access to quality health care, reduce unmet healthcare needs and cut out-of-pocket spending for poor and vulnerable families.
+
+Who runs Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY is under the Ministry of Health and Family Welfare. The National Health Authority (NHA) is the apex body that implements the scheme. In each state, a State Health Agency (SHA) runs the scheme, empanels private hospitals and settles hospital claims.
+
+Funding of Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY is a centrally sponsored scheme. The cost is shared between the Centre and the states in a 60:40 ratio. For north-eastern states, Himalayan states and Union Territories with a legislature, the ratio is 90:10.
+
+Coverage amount under Ayushman Bharat PM-JAY: Eligible families get health cover of up to Rs 5 lakh per family per year for secondary and tertiary care hospitalisation. The cover is on a family floater basis, so any member of the family can use the amount.
+
+Family size and age under Ayushman Bharat PM-JAY: There is no cap on family size, age or gender of members under Ayushman Bharat PM-JAY, so all members of an eligible family can be covered.
+
+Cashless and paperless treatment under Ayushman Bharat PM-JAY: Treatment under Ayushman Bharat PM-JAY is cashless and paperless at empanelled public and private hospitals. The beneficiary does not pay at the hospital for covered treatment. The hospital claims the cost directly from the scheme through the State Health Agency.
+
+Pre-existing diseases under Ayushman Bharat PM-JAY: Pre-existing medical conditions are covered from day one of enrolment under Ayushman Bharat PM-JAY, with no waiting period.
+
+Pre and post hospitalisation under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY also covers expenses linked to the hospital stay, including diagnostics and medicines before admission, and post-hospitalisation follow-up care for up to 15 days after discharge, as per scheme rules.
+
+Treatments covered under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY covers listed medical and surgical treatments across about 27 specialties, including cardiology, oncology, orthopaedics, neurosurgery, general surgery, ICU care, and high-risk pregnancy care. The treatment must need hospital admission and be listed in the scheme's health benefit packages.
+
+Health benefit packages under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY covers treatments through bundled Health Benefit Packages (HBP). The current master list, HBP 2022, has 1,961 procedures across 27 medical and surgical specialties, as confirmed in a Lok Sabha reply in July 2025. Each package bundles the procedure cost, diagnostics and post-operative care at a fixed rate. The scheme started in 2018 with 1,393 packages and the list is revised from time to time, so the numbers may change.
+
+What is not covered under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY is a hospitalisation scheme. Outpatient (OPD) consultations and routine medicines without hospital admission are generally not covered. Other commonly excluded items are cosmetic or aesthetic procedures, fertility and infertility treatment, drug rehabilitation programmes, individual diagnostic tests that do not lead to hospitalisation, and dental treatment that is corrective, cosmetic or aesthetic. Coverage is on fixed package rates and only for treatments listed in the scheme packages.
+
+Organ transplants under Ayushman Bharat PM-JAY: Under Ayushman Bharat PM-JAY, organ transplant cover is limited to selected procedures that are listed in the health benefit packages. Sources differ on this, so a beneficiary should ask the Ayushman Mitra at an empanelled hospital whether a specific transplant is covered.
+
+Eligibility for Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY is an entitlement-based scheme. Eligibility is based on the deprivation criteria (rural) and occupational criteria (urban) of the Socio-Economic Caste Census (SECC) 2011, plus families from the earlier RSBY scheme who were left out of SECC. There is no enrolment fee. Eligible families are identified from this database, so a family cannot simply apply on its own without being in the list. Citizens aged 70 and above are an exception, see the senior citizen paragraph.
+
+Rural eligibility under Ayushman Bharat PM-JAY: In rural areas, a family is eligible under Ayushman Bharat PM-JAY if it falls in any one of these SECC deprivation categories. D1: only one room with kucha walls and kucha roof. D2: no adult member aged 16 to 59. D3: female-headed household with no adult male member aged 16 to 59. D4: a disabled member and no able-bodied adult member. D5: Scheduled Caste or Scheduled Tribe household. D7: landless household earning a major part of its income from manual casual labour.
+
+Automatically included rural families under Ayushman Bharat PM-JAY: Rural families in these groups are automatically included in Ayushman Bharat PM-JAY: households without shelter, destitute households living on alms, manual scavenger families, primitive tribal groups, and legally released bonded labour.
+
+Urban eligibility under Ayushman Bharat PM-JAY: In urban areas, eligibility under Ayushman Bharat PM-JAY is based on 11 defined occupational categories of workers. These include rag pickers, domestic workers, street vendors and hawkers, construction workers, plumbers, masons, painters and security guards, sanitation workers and gardeners, home-based workers, artisans and tailors, transport workers such as drivers and conductors, shop workers and delivery assistants, electricians, mechanics and repair workers, and washermen and chowkidars.
+
+Senior citizens under Ayushman Bharat PM-JAY: All Indian citizens aged 70 years and above are eligible for Ayushman Bharat PM-JAY irrespective of their income. They are issued the Ayushman Vay Vandana Card. The expansion was launched by the Prime Minister on 29 October 2024 and is expected to benefit about 6 crore senior citizens from around 4.5 crore families.
+
+Senior citizen cover amount under Ayushman Bharat PM-JAY: A senior citizen aged 70 or above from a family not already covered gets cover of Rs 5 lakh per year under Ayushman Bharat PM-JAY. A senior citizen whose family is already covered gets an additional top-up cover of Rs 5 lakh per year, which is meant for senior members and is not shared with family members below 70.
+
+Seniors with other insurance under Ayushman Bharat PM-JAY: Senior citizens aged 70 and above who have private health insurance or are covered under ESIC can still get Ayushman Bharat PM-JAY benefits. Seniors covered under CGHS, ECHS or Ayushman CAPF can choose either their existing scheme or Ayushman Bharat PM-JAY.
+
+How to register for the Ayushman Vay Vandana Card under Ayushman Bharat PM-JAY: Senior citizens aged 70 and above can register for the Ayushman Vay Vandana Card on the Ayushman App or the beneficiary portal beneficiary.nha.gov.in, or visit a Common Service Centre or the Ayushman Mitra desk of an empanelled hospital. Keep Aadhaar ready.
+
+How to check eligibility for Ayushman Bharat PM-JAY: You can check whether your family is eligible on the official portal mera.pmjay.gov.in or pmjay.gov.in using the "Am I Eligible" option with your mobile number (OTP verification), name or ration card details. You can also call the helpline, or visit an Ayushman Mitra at an empanelled hospital or a Common Service Centre (CSC).
+
+How to get the Ayushman card under Ayushman Bharat PM-JAY: Eligible beneficiaries can get their Ayushman card made at a Common Service Centre (CSC), at an Ayushman kiosk or Ayushman Mitra desk of an empanelled hospital, or through the Ayushman App and the beneficiary portal beneficiary.nha.gov.in. Keep Aadhaar (preferred) or another valid government photo ID ready. The family is verified before the card is issued.
+
+Documents needed for Ayushman Bharat PM-JAY: To use Ayushman Bharat PM-JAY, a beneficiary needs Aadhaar (preferred) or another government photo ID such as a voter ID or PAN card, and the Ayushman card or proof of being in the beneficiary list. Some states also accept a family identity document such as a ration card for family verification.
+
+Process at the hospital under Ayushman Bharat PM-JAY: At an empanelled hospital, the beneficiary meets the Ayushman Mitra at the help desk, who verifies identity and eligibility. The hospital then gets pre-authorisation for the treatment where required, treats the patient without charging for covered services, and claims payment from the State Health Agency.
+
+Finding hospitals under Ayushman Bharat PM-JAY: Treatment is available at empanelled hospitals across India. You can search the list of empanelled hospitals on the official hospital search page of pmjay.gov.in using the "Find Hospital" option. At each empanelled hospital an Ayushman Mitra helps beneficiaries.
+
+Hospital network of Ayushman Bharat PM-JAY: As of February 2025, Ayushman Bharat PM-JAY had about 31,000 empanelled hospitals, of which about 17,100 are public and about 14,000 are private. In states that implement the scheme, public hospitals from Community Health Centre level and above are deemed empanelled, while private hospitals are empanelled by the State Health Agency.
+
+Portability under Ayushman Bharat PM-JAY: The scheme is portable across India. A beneficiary can take treatment at any empanelled hospital in any state, not only in the home state, as long as the state implements Ayushman Bharat PM-JAY.
+
+Scale of Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY was originally designed for about 10.74 crore poor and vulnerable families, around 50 crore people. After the senior citizen expansion, the scheme covers about 12.3 crore families and 55 crore individuals. Over 34 crore Ayushman cards had been created by 30 June 2024.
+
+States and Union Territories under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY is implemented in almost all states and Union Territories. Odisha joined in January 2025 as the 34th state or UT, and Delhi signed the agreement on 5 April 2025 as the 35th. West Bengal was the last state outside the scheme and was reported in 2026 as joining. States can add their own top-ups, so cover and benefits can differ slightly by state.
+
+Ayushman Bharat PM-JAY in Delhi: Delhi joined Ayushman Bharat PM-JAY on 5 April 2025. Delhi's government announced an additional top-up of Rs 5 lakh over the central cover, which together can give eligible families up to Rs 10 lakh per year. About 6.5 lakh families were expected to benefit.
+
+Ayushman Bharat PM-JAY in Odisha: Odisha joined Ayushman Bharat PM-JAY in January 2025 and runs it together with its own Gopabandhu Jan Arogya Yojana (GJAY). Each family gets cover of up to Rs 5 lakh per year, with an additional Rs 5 lakh for women members.
+
+Complaints and grievances under Ayushman Bharat PM-JAY: If a hospital denies free treatment, a pharmacy does not supply medicine, or someone harasses a beneficiary, the beneficiary can file a grievance under Ayushman Bharat PM-JAY. The scheme has a three-tier grievance system at district, state and national level. Complaints can be made on the Centralized Grievance Redressal Management System (CGRMS) portal, through central and state call centres, by email, or by writing to the State Health Agency.
+
+Fraud and action against hospitals under Ayushman Bharat PM-JAY: Empanelled hospitals must provide treatment to Ayushman Bharat PM-JAY beneficiaries as per the terms of empanelment. Hospitals found committing fraud can be penalised, suspended or removed from the panel. Suspicious claims are flagged and checked by fraud-control units at national and state level. Beneficiaries should not pay for covered treatment and should report any such demand.
+
+Health and Wellness Centres under Ayushman Bharat PM-JAY: Ayushman Bharat has two parts, and Ayushman Bharat PM-JAY is one of them. PM-JAY gives hospitalisation cover. The Health and Wellness Centres provide preventive and primary healthcare services closer to home. Outpatient primary care is delivered through these centres, not through PM-JAY.
+
+Helpline for Ayushman Bharat PM-JAY: You can call the official Ayushman Bharat PM-JAY helpline at 14555 for questions about eligibility or complaints. An older helpline number, 1800-111-565, is also listed in several sources. The official website is pmjay.gov.in.
+
+Cancer treatment under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY covers cancer care including medical oncology (chemotherapy), surgical oncology and radiation oncology. A Lok Sabha reply in February 2025 said the HBP has over 200 cancer packages with more than 500 procedures. The treatment must be done at an empanelled hospital that offers the relevant package.
+
+Women, mothers and newborns under Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY has packages for women's health, such as high-risk pregnancy care, and for neonatal and paediatric care. Women make up about 48.56 percent of eligible beneficiaries. Routine antenatal check-ups without admission are generally not covered because they are outpatient care.
+
+Pre-authorisation under Ayushman Bharat PM-JAY: Under Ayushman Bharat PM-JAY, most packages need pre-authorisation, which means the hospital must get approval from the State Health Agency through the Transaction Management System (TMS) before the treatment starts. The patient does not need to arrange this, the hospital does it.
+
+Treatments not listed in packages under Ayushman Bharat PM-JAY: To make sure beneficiaries are not denied care, Ayushman Bharat PM-JAY has a provision called the unspecified surgical package. It can be used for a surgical treatment that is not in the listed packages, but only with compulsory pre-authorisation, and it cannot be used for anything on the exclusion list such as OPD care, drug rehabilitation or cosmetic procedures. It does not apply to medical treatment.
+
+Ayushman card verification under Ayushman Bharat PM-JAY: To create or download an Ayushman card under Ayushman Bharat PM-JAY, the beneficiary completes Aadhaar-based e-KYC. This can be done with Aadhaar OTP sent to the Aadhaar-linked mobile number, or with fingerprint, iris scan or face authentication if the mobile number is not linked. Never share your Aadhaar OTP with another person.
+
+Ayushman card cost and download under Ayushman Bharat PM-JAY: The Ayushman card under Ayushman Bharat PM-JAY is free. A beneficiary does not have to pay anything to make or download it. The card can be downloaded from the beneficiary portal beneficiary.nha.gov.in, the Ayushman App, the UMANG app, or at a Common Service Centre or empanelled hospital.
+
+Ayushman App under Ayushman Bharat PM-JAY: The Ayushman App is an app launched by the National Health Authority to speed up Ayushman card creation. A beneficiary can use it to check eligibility, verify with Aadhaar and download the card. If the app shows "No beneficiary found", it means the Aadhaar number was not found in the Ayushman Bharat PM-JAY database.
+
+Name not found in the list under Ayushman Bharat PM-JAY: If your name is not found when you check eligibility for Ayushman Bharat PM-JAY, your family is not in the beneficiary database and you cannot enrol on your own. You can ask at an Ayushman Mitra desk or the helpline whether another route applies, such as a state scheme. Citizens aged 70 and above can still register for the Vay Vandana Card irrespective of the list.
+
+Adding family members under Ayushman Bharat PM-JAY: For an already registered family under Ayushman Bharat PM-JAY, the card process lets the operator add a new member to the existing beneficiary family record after authentication, so that each member can have an Ayushman card.
+
+ABHA and Ayushman Bharat Digital Mission: The Ayushman Bharat Digital Mission (ABDM) issues the ABHA (Ayushman Bharat Health Account) number, a digital health ID. The ABHA card is different from the Ayushman PM-JAY card. Having an ABHA card is not mandatory to get Ayushman Bharat PM-JAY treatment.
+
+Difference between Ayushman Bharat and Ayushman Bharat PM-JAY: Ayushman Bharat is the umbrella programme of the Government of India. Ayushman Bharat PM-JAY is its health insurance component for hospitalisation cover. Other parts include the Health and Wellness Centres (now called Ayushman Arogya Mandirs) for primary care, the Ayushman Bharat Digital Mission, and the Pradhan Mantri Ayushman Bharat Health Infrastructure Mission (PM-ABHIM), launched in October 2021 to strengthen public health infrastructure.
+
+Change in beneficiary base under Ayushman Bharat PM-JAY: In January 2022 the Government of India revised the beneficiary base of Ayushman Bharat PM-JAY from about 10.74 crore families to about 12 crore families, covering around 55 crore individuals. Several states also cover additional families using their own funds.
+
+Is private insurance needed with Ayushman Bharat PM-JAY: Ayushman Bharat PM-JAY covers hospitalisation up to Rs 5 lakh per family per year for listed packages. Having it does not stop a person from buying private health insurance. Some families add a private top-up policy for treatments or amounts that PM-JAY does not cover.
